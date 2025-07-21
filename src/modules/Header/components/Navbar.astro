@@ -1,0 +1,32 @@
+---
+interface Props {
+  id?: string
+}
+
+const { id } = Astro.props
+---
+
+<header
+  id={id}
+  class='fixed top-0 z-50 w-full start-0'>
+  <div
+    class='flex items-center justify-between p-4 md:max-w-screen-xl md:mx-auto md:px-0'>
+    <slot />
+  </div>
+</header>
+
+<style>
+  #header {
+    animation: blur-header linear both;;
+    animation-timeline: scroll(root);
+    animation-range: 100px 500px;
+  }
+
+  @keyframes blur-header {
+  to {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(64px);
+  }
+}
+
+</style>

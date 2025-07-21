@@ -1,0 +1,14 @@
+---
+interface Props {
+  href?: string
+}
+
+const { href = '/' } = Astro.props
+---
+
+<a
+  href={href}
+  aria-label="logo suads"
+  class='flex items-center space-x-3 rtl:space-x-reverse'>
+  <slot />
+</a>

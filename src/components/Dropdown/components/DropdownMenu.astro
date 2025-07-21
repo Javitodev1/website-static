@@ -1,0 +1,19 @@
+---
+interface Props {
+  id: string
+  labelledby: string
+}
+
+const { id, labelledby } = Astro.props
+---
+
+<div
+  id={id}
+  data-dropdown-menu
+  class='z-10 hidden divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-neutral-950'>
+  <ul
+    class='py-3 pl-4'
+    aria-labelledby={labelledby}>
+    <slot />
+  </ul>
+</div>

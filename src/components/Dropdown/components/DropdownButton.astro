@@ -1,0 +1,28 @@
+---
+import Arrow from '@/assets/arrow.svg'
+import { textStyles, textColors } from '@/components/Text.astro'
+
+interface Props {
+  id: string
+  menuId: string
+}
+
+const { id, menuId } = Astro.props
+const textClass = [textStyles.badge, textColors.neutral]
+---
+
+<button
+  id={id}
+  data-dropdown-trigger
+  data-dropdown-toggle={menuId}
+  type='button'
+  class='inline-flex items-center gap-1'
+  class:list={textClass}>
+  <slot />
+
+  <Arrow
+    class='w-5 h-5'
+    aria-hidden='true'
+    data-dropdown-icon
+  />
+</button>

@@ -1,0 +1,41 @@
+---
+import MainLayout, { type Props as IMainLayout } from './MainLayout.astro'
+import Text from '@/components/Text.astro'
+import Section from '@/components/Section.astro'
+import Glow from '@/components/Misc/Glow.astro'
+
+import Favicon from '@/assets/favicon-beauty.svg'
+
+const layout: IMainLayout = {
+  metadata: {
+    author: 'Javier Fuentes',
+    title: '404 | Pagina no encontrada',
+    description: '',
+    keywords: '',
+    ogImage: '',
+    url: 'https://suadsagency.com/404',
+  },
+}
+---
+
+<MainLayout {...layout}>
+  <Section>
+    <Text
+      variant={'banner'}
+      innerHTML='404 Pagina no encontrada'
+      class='text-center mb-16 mt-24 md:mt-0'
+    />
+
+    <div class='relative md:w-96 w-48 h-auto aspect-square mx-auto'>
+      <Glow class='absolute top-1 left-1/2 -translate-x-1/2' />
+      <img
+        src={Favicon.src}
+        alt='Suads Agency Logo | Publicidad Digital | Desarrollo Web | Diseño Grafico'
+        width={Favicon.width}
+        height={Favicon.height}
+        loading='eager'
+        class='relative w-full h-auto'
+      />
+    </div>
+  </Section>
+</MainLayout>

@@ -1,0 +1,54 @@
+---
+import Section from '@/components/Section.astro'
+import Text from '@/components/Text.astro'
+import Button from '@/components/Button.astro'
+
+import type { CMSImage } from '@/types/content'
+
+export interface Props {
+  id: string
+  title: string
+  body: string
+  cta: string
+  href: string
+  image: CMSImage
+}
+
+const { title, body, cta, id, href, image } = Astro.props
+
+const hasBody = !!body
+---
+
+<Section id={id} variant={'none'}>
+  <div class='flex justify-center items-center md:-mt-20'>
+    <img
+      src={image.url}
+      alt={image.alternativeText}
+      width={image.width}
+      height={image.height}
+      loading='lazy'
+    />
+  </div>
+
+  <div
+    class='flex flex-col items-center text-center max-w-2xl mx-auto gap-6 md:-mt-64'>
+    <Text
+      class='max-w-lg'
+      tag={'h2'}
+      variant={'title'}
+      innerHTML={title}
+    />
+
+    <Text
+      tag={'p'}
+      variant={'body'}
+      innerHTML={body}
+      class='mb-4'
+    />
+
+    <Button
+      href={href}
+      cta={cta}
+    />
+  </div>
+</Section>

@@ -1,0 +1,27 @@
+---
+import Section from '@/components/Section.astro'
+import Text from '@/components/Text.astro'
+import FeatureCard, {
+  type Props as IFeatureCard,
+} from '@/components/Cards/FeatureCard.astro'
+
+export interface Props {
+  id: string
+  title: string
+  features?: IFeatureCard[]
+}
+
+const { id, title, features = [] } = Astro.props
+---
+
+<Section id={id}>
+  <Text
+    tag={'h2'}
+    variant={'title'}>
+    <slot name='title'><Fragment set:html={title} /></slot>
+  </Text>
+
+  <div class='flex flex-wrap justify-between mt-12 gap-16 md:gap-0'>
+    {features.map((card) => <FeatureCard {...card} />)}
+  </div>
+</Section>

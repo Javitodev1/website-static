@@ -1,0 +1,21 @@
+---
+import Text from './Text.astro'
+
+export interface Props {
+  text: string
+}
+
+const { text } = Astro.props
+---
+
+<div
+  class='bg-linear-(--gradient-special-stroke) p-0.5 rounded-full inline-block'>
+  <div class='bg-primary-1000 px-6 py-1 rounded-full'>
+    <Text
+      variant={'badge'}
+      color={'badgeGradient'}
+      class='text-nowrap'
+      innerHTML={text}
+    />
+  </div>
+</div>

@@ -1,0 +1,100 @@
+---
+import Text from '@/components/Text.astro'
+import Badge from '@/components/Badge.astro'
+import Button from '@/components/Button.astro'
+import Section from '@/components/Section.astro'
+
+import type { CMSImage } from '@/types/content'
+
+export interface Props {
+  id: string
+  title: string
+  body: string
+  badges?: string[]
+  cta?: string
+  href?: string
+  desktopImage?: CMSImage
+  mobileImage?: CMSImage
+}
+
+const {
+  id,
+  title,
+  body,
+  badges = [],
+  cta = '',
+  href = '#',
+  desktopImage,
+  mobileImage,
+} = Astro.props
+
+const hasCTA = !!cta && href !== '#'
+const hasBadges = badges.length > 0
+const hasImage = desktopImage != null && mobileImage != null
+---
+
+<Section
+  id={id}
+  class='relative min-h-screen w-full'
+  variant={'none'}>
+  <div
+    class='absolute top-0 left-0 size-full'
+    slot='before'>
+    {
+      hasImage && (
+        <picture slot='image'>
+          <source
+            media='(max-width: 640px)'
+            srcset={mobileImage.url}
+            type={'image/webp'}
+          />
+          <img
+            src={desktopImage.url}
+            alt={desktopImage.alternativeText}
+            width={desktopImage.width}
+            height={desktopImage.height}
+            loading={'eager'}
+            class='object-center object-cover size-full mask-fade'
+          />
+        </picture>
+      )
+    }
+  </div>
+
+  <div
+    slot='after'
+    class='absolute top-0 left-0 md:size-full'>
+    <div class='px-4 md:px-0 md:max-w-7xl md:mx-auto pt-40'>
+      {
+        hasBadges && (
+          <div class='flex gap-6 flex-wrap'>
+            {badges.map((badge) => (
+              <Badge text={badge} />
+            ))}
+          </div>
+        )
+      }
+
+      <div class='max-w-4xl mt-6 mb-12 space-y-4'>
+        <Text
+          variant={'banner'}
+          innerHTML={title}
+        />
+
+        <Text
+          variant={'bodyBanner'}
+          innerHTML={body}
+        />
+      </div>
+
+      {
+        hasCTA && (
+          <Button
+            href={href}
+            cta={cta}
+          />
+        )
+      }
+    </div>
+  </div>
+</Section>

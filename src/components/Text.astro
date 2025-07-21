@@ -1,0 +1,98 @@
+---
+export const textStyles = {
+  banner: 'text-3xl md:text-5xl font-title uppercase', // Mobile: 40px | Desktop: 88px
+  title: 'text-2xl md:text-3xl font-title uppercase', // Mobile: 28px | Desktop: 40px
+  bigNumber: 'text-2xl md:text-4xl font-title', // Mobile: 28px | Desktop: 70px
+  bigNumberBody: 'text-sm md:text-md font-body', // Mobile: 14px | Desktop: 20px
+  bodyBanner: 'text-sm md:text-xl font-body', // Mobile: 14px | Desktop: 24px
+  body: 'text-sm md:text-lg font-body', // Mobile: 14px | Desktop: 20px
+  button: 'text-sm md:text-lg font-body font-bold', // Mobile: 14x | Desktop: 20px
+  badge: 'text-xs md:text-md font-body', // Mobile: 11px | Desktop: 16px
+  cardTitle: 'text-sm md:text-xl font-title', // Mobile: 14px | Desktop: 24px
+  cardBody: 'text-xs md:text-md font-body', // Mobile: 11px | Desktop: 16px
+}
+
+export const textColors = {
+  badgeGradient: 'bg-clip-text text-transparent bg-clip-text text-transparent bg-linear-(--gradient-special-badge)',
+  textGradient: 'bg-clip-text text-transparent bg-clip-text text-transparent bg-linear-(--gradient-special-text)',
+  titleGradient: 'bg-clip-text text-transparent bg-clip-text text-transparent bg-linear-(--gradient-special-title)',
+  primaryGradient: 'bg-clip-text text-transparent bg-clip-text text-transparent bg-linear-(--gradient-primary)',
+  secondaryGradient: 'bg-clip-text text-transparent bg-clip-text text-transparent bg-linear-(--gradient-secondary)',
+  neutral: 'text-neutral-50',
+  primary: 'text-primary',
+  secondary: 'text-secondary',
+  none: '',
+}
+
+type Variant = keyof typeof textStyles
+type Color = keyof typeof textColors
+type TagType =
+  | 'p'
+  | 'a'
+  | 'span'
+  | 'small'
+  | 'div'
+  | 'strong'
+  | 'em'
+  | 'blockquote'
+  | 'summary'
+  | 'label'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+
+const variantToTagMap: Partial<Record<Variant, TagType>> = {
+  banner: 'h1',
+  title: 'h2',
+  cardTitle: 'h3',
+}
+
+const variantToColorMap: Partial<Record<Variant, Color>> = {
+  banner: 'textGradient',
+  title: 'titleGradient',
+  body: 'neutral',
+  bodyBanner: 'primary',
+}
+
+export interface Props {
+  tag?: TagType
+  variant?: Variant
+  class?: string
+  for?: string
+  id?: string
+  href?: string
+  color?: Color
+  innerHTML?: string
+}
+
+const {
+  innerHTML,
+  color = 'neutral',
+  tag = 'p', // default to paragraph
+  variant = 'body', // default to textMD variant
+  class: className = '',
+  for: htmlFor, // Capture 'for' attribute
+  ...rest
+} = Astro.props
+
+// Modify default tag & color by variant, otherwise, return the prop
+const Tag: TagType = tag !== 'p' ? tag : variantToTagMap[variant] || tag
+const variantColor: Color = color !== 'neutral' ? color : variantToColorMap[variant] || color
+
+const colorStyles = textColors[variantColor]
+
+// Get the base classes for the variant
+const baseClasses = textStyles[variant] || textStyles.body // Default to body if not found
+---
+
+<Tag
+  class:list={[baseClasses, className, colorStyles]}
+  for={htmlFor}
+  {...rest}>
+  <slot name='left-icon' />
+  <slot><Fragment set:html={innerHTML} /></slot>
+  <slot name='right-icon' />
+</Tag>

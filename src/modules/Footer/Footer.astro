@@ -1,0 +1,63 @@
+---
+import Section from '@/components/Section.astro'
+import Text from '@/components/Text.astro'
+import Logo from '@/assets/logo.svg'
+---
+
+<Section
+  id='footer'
+  tag={'footer'}
+  variant={'small'}>
+  <a href='/' aria-label="logo suads">
+    <Logo class='mb-8' />
+  </a>
+
+  <ul class='flex flex-wrap gap-16 *:space-y-4'>
+    <li>
+      <div>
+        <Text>Siguenos</Text>
+        <div class='flex gap-4'>
+          <p>Inst</p>
+          <p>Face</p>
+          <p>Link</p>
+        </div>
+      </div>
+
+      <Text>info@suads.agency</Text>
+      <Text>+598 664421</Text>
+      <Text>Arturo santana 672</Text>
+    </li>
+
+    <li class='max-w-72'>
+      <Text class='uppercase tracking-widest'>Somos Suads</Text>
+      <Text variant={'badge'}
+        >Somos Suads una agencia de Marketing Digital especializada en
+        publicidad online, diseño gráfico y desarrollo web. Creamos estrategias
+        personalizadas que conectan tu marca con los clientes ideales,
+        ayudándote a aumentar tu visibilidad, mejorar la experiencia digital y
+        lograr resultados tangibles</Text
+      >
+    </li>
+
+    <li>
+      <Text class='uppercase tracking-widest'>Servicios</Text>
+      <div class='flex gap-4'>
+        <div class='w-1/2 space-y-4'>
+          <Text variant={'badge'}>Publicidad en Instagram y facebook</Text>
+          <Text variant={'badge'}>Publicidad en Google ads</Text>
+          <Text variant={'badge'}>Diseño web</Text>
+          <Text variant={'badge'}>Desarrollo web</Text>
+          <Text variant={'badge'}>Diseño grafico</Text>
+        </div>
+
+        <div class='w-1/2 space-y-4'>
+          <Text variant={'badge'}
+            >Branding estrategico y posicionamiento de marca</Text
+          >
+          <Text variant={'badge'}>Optimizacion de funnels de conversión</Text>
+          <Text variant={'badge'}>Adquisicion y conversion de clientes</Text>
+        </div>
+      </div>
+    </li>
+  </ul>
+</Section>

@@ -1,0 +1,46 @@
+---
+const sizeStyle = {
+  lg: 'md:w-96 w-48',
+} as const
+
+export interface GlowColor {
+  baseClass: string
+  lightClass: string
+}
+
+const colorStyle = {
+  primary: {
+    baseClass: 'bg-blue-700',
+    lightClass: 'bg-blue-500',
+  } satisfies GlowColor,
+} as const
+
+type SizeVariant = keyof typeof sizeStyle
+type ColorVariant = keyof typeof colorStyle
+
+interface Props {
+  size?: SizeVariant
+  color?: ColorVariant
+  class?: string
+}
+
+const { size = 'lg', color = 'primary', class: className = '' } = Astro.props
+
+const sizeClass = sizeStyle[size]
+const { baseClass, lightClass } = colorStyle[color]
+---
+
+<div class:list={[className]}>
+  <div
+    class='relative h-auto aspect-square'
+    class:list={[sizeClass]}>
+    <div
+      class='absolute size-full rounded-full blur-4xl'
+      class:list={[baseClass]}>
+    </div>
+    <div
+      class='absolute size-full rounded-full blur-xl'
+      class:list={[lightClass]}>
+    </div>
+  </div>
+</div>

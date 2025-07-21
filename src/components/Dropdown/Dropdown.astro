@@ -1,0 +1,27 @@
+---
+import DropdownButton from './components/DropdownButton.astro'
+import DropdownMenu from './components/DropdownMenu.astro'
+
+interface Props {
+  name: string
+}
+
+const { name } = Astro.props
+
+const buttonId = `dropdown-${name}-button`
+const menuId = `dropdown-${name}-menu`
+---
+
+<div data-dropdown>
+  <DropdownButton id={buttonId} menuId={menuId}>
+    <slot name='header'>Dropdown Menu</slot>
+  </DropdownButton>
+
+  <DropdownMenu
+    id={menuId}
+    labelledby={buttonId}>
+    <slot />
+  </DropdownMenu>
+</div>
+
+<script src='./libs/dropdown.ts'></script>

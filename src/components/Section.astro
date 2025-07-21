@@ -1,0 +1,43 @@
+---
+const wrapperStyles = {
+  normal: 'my-16 md:my-32',
+  small: 'my-8 md:my-16',
+  none: '',
+}
+
+type Variant = keyof typeof wrapperStyles
+
+export interface Props {
+  id?: string
+  bgImage?: string
+  class?: string
+  containerClass?: string
+  tag?: 'section' | 'header' | 'footer' | 'div' | 'aside'
+  variant?: Variant
+}
+
+const {
+  id,
+  class: className,
+  containerClass,
+  variant = 'normal',
+  tag: Tag = 'section',
+} = Astro.props
+
+const wrapperClass = wrapperStyles[variant]
+---
+
+<Tag
+  id={id}
+  class='bg-primary-1000'
+  class:list={[wrapperClass, className]}>
+  <slot name='before' />
+
+  <div
+    class='px-4 md:px-0 md:max-w-7xl md:mx-auto'
+    class:list={[containerClass]}>
+    <slot />
+  </div>
+
+  <slot name='after' />
+</Tag>

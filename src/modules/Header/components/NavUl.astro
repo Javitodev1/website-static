@@ -1,0 +1,16 @@
+---
+interface Props {
+  id?: string
+}
+
+const { id } = Astro.props
+---
+
+<nav
+  class='items-center justify-between hidden w-full md:flex md:w-auto md:order-1'
+  id={id}>
+  <ul
+    class='flex flex-col justify-center items-center p-4 mt-4 border rounded-lg md:p-0 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0'>
+    <slot />
+  </ul>
+</nav>

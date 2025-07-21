@@ -1,0 +1,36 @@
+---
+import Text from '@/components/Text.astro'
+
+import type { CMSMediaCard } from '@/types/content'
+
+export interface Props extends CMSMediaCard {}
+
+const { title, body, image } = Astro.props
+---
+
+<article
+  class='size-full md:max-w-80 bg-neutral-950 rounded-3xl px-6 inset-shadow-card inset-shadow-neutral-50/15 border-l-2 border-b-2 border-neutral-50/80'>
+  <div class='py-8'>
+    <img
+      src={image.url}
+      alt={image.alternativeText}
+      width={image.width}
+      height={image.height}
+      class='h-full w-auto md:max-h-28 max-h-10'
+    />
+  </div>
+
+  <Text
+    tag={'h3'}
+    variant={'cardTitle'}
+    class='mb-4'
+    innerHTML={title}
+  />
+
+  <Text
+    tag={'p'}
+    variant={'cardBody'}
+    class='mb-8'
+    innerHTML={body}
+  />
+</article>

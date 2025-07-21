@@ -1,0 +1,78 @@
+---
+import Section from '@/components/Section.astro'
+import Text from '@/components/Text.astro'
+import StatCard from '@/components/Cards/StatCard.astro'
+
+import type { CMSBasicCard, CMSImage } from '@/types/content'
+
+export interface Props {
+  id: string
+  title: string
+  stats: CMSBasicCard[]
+  image: CMSImage
+}
+
+const { id, title, image, stats } = Astro.props
+---
+
+<Section
+  id={id}
+  class='relative overflow-hidden md:overflow-visible'>
+  <div
+    slot='before'
+    class='absolute md:top-0 md:right-0 -right-2/3 -top-1/4'>
+    <img
+      src={image.url}
+      alt={image.alternativeText}
+      width={image.width}
+      height={image.height}
+      loading={'lazy'}
+      class='scale-50 md:scale-100'
+    />
+  </div>
+
+  <div class='relative md:h-dvh h-auto flex items-center'>
+    <div class='max-w-3xl'>
+      <Text
+        tag={'h2'}
+        variant={'title'}
+        innerHTML={title}
+      />
+
+      <div
+        id='flow-container'
+        class='mt-24 md:mt-16 grid md:grid-cols-2 md:gap-16 gap-6'>
+        {stats.map((stat) => <StatCard {...stat} />)}
+      </div>
+    </div>
+  </div>
+</Section>
+
+<script>
+  import 'number-flow'
+
+  document.addEventListener('astro:page-load', () => {
+    const container = document.getElementById('flow-container')!
+    const flows = container.querySelectorAll('number-flow')
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            flows.forEach((flow) => {
+              const value = Number(flow.getAttribute('data-value'))
+
+              flow.update(value)
+              obs.unobserve(entry.target)
+            })
+          }
+        })
+      },
+      {
+        threshold: 0.5,
+      }
+    )
+
+    observer.observe(container)
+  })
+</script>

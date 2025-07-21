@@ -1,0 +1,53 @@
+---
+import Text from '@/components/Text.astro'
+import type { CMSBasicCard } from '@/types/content'
+import { renderInnerHTML } from 'number-flow'
+
+export interface Props extends CMSBasicCard {}
+
+const { title, body } = Astro.props
+---
+
+<article class='flex gap-8'>
+  <div
+    class='w-2 h-full bg-linear-(--gradient-primary) rounded-xs shadow-to-r shadow-white'>
+  </div>
+  <div class='md:py-4 py-1 md:space-y-4 space-y-1 w-fit'>
+    <Text
+      tag={'p'}
+      variant={'bigNumber'}
+      color={'primary'}>
+      <number-flow
+        data-value={title}
+        set:html={renderInnerHTML(1, {
+          locales: 'en-US',
+          format: { notation: 'standard' },
+        })}
+      />
+    </Text>
+
+    <Text
+      tag={'h3'}
+      variant={'bigNumberBody'}
+      innerHTML={body}
+    />
+  </div>
+</article>
+
+<script>
+  import 'number-flow'
+
+  const flows = document.querySelectorAll('number-flow')!
+
+  flows.forEach((flow) => {
+    flow.locales = 'en-US'
+    flow.format = { notation: 'standard' }
+    flow.spinTiming = {
+      duration: 1500,
+      easing: 'ease-out',
+    }
+    flow.numberSuffix = '+'
+    
+    flow.update(1)
+  })
+</script>

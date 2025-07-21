@@ -1,0 +1,62 @@
+---
+import '@/styles/global.css'
+
+import { ClientRouter } from 'astro:transitions'
+import { Font } from 'astro:assets'
+
+import Metadata from '@/components/Metadata.astro'
+import Header from '@/modules/Header/Header.astro'
+import Footer from '@/modules/Footer/Footer.astro'
+import Whatsapp from '@/components/Misc/Whatsapp.astro'
+
+import CSSTimelinePolyfill from '@/scripts/CSSTimelinePolyfill.astro'
+
+import { type Props as IMetadata } from '@/components/Metadata.astro'
+
+export interface Props {
+  metadata: IMetadata
+}
+
+const { metadata } = Astro.props
+---
+
+<!doctype html>
+<html
+  lang='es'
+  transition:name='root'
+  transition:animate='none'>
+  <head>
+    <Font
+      cssVariable='--font-bebas-neue'
+      preload
+    />
+    <Font
+      cssVariable='--font-roboto'
+      preload
+    />
+
+    <Metadata {...metadata} />
+    <ClientRouter />
+  </head>
+
+  <body class='bg-primary-1000'>
+    <Header />
+
+    <div
+      class='grid min-h-screen grid-rows-[1fr,auto]'
+      transition:animate='fade'>
+      <main>
+        <slot />
+      </main>
+
+      <Footer />
+    </div>
+
+    <Whatsapp
+      phone={''}
+      message={''}
+    />
+
+    <CSSTimelinePolyfill />
+  </body>
+</html>

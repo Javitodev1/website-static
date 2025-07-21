@@ -1,0 +1,52 @@
+---
+import Text from '@/components/Text.astro'
+import Arrow from '@/assets/arrowUp.svg'
+
+export interface Props {
+  title: string
+  body: string
+  name: string
+  expanded?: boolean
+}
+
+const { title, body, name, expanded = false } = Astro.props
+const headingID = `accordion-heading-${name}`
+const bodyID = `accordion-body-${name}`
+---
+
+<li data-accordion-item>
+  <h2
+    id={headingID}
+    data-trigger>
+    <button
+      type='button'
+      class='flex items-center justify-between w-full py-5 rtl:text-right border-b border-neutral-200 gap-3'
+      data-accordion-target={bodyID}
+      aria-expanded={expanded}
+      aria-controls={bodyID}>
+      <Text
+        tag={'span'}
+        variant={'cardTitle'}>
+        <slot name='header'><Fragment set:html={title} /></slot>
+      </Text>
+
+      <Arrow
+        data-accordion-icon
+        class='w-5 h-5 shrink-0'
+        aria-hidden='true'
+      />
+    </button>
+  </h2>
+
+  <div
+    id={bodyID}
+    class='hidden'
+    data-target
+    aria-labelledby={headingID}>
+    <div class='py-5 border-b border-neutral-200'>
+      <Text variant={'cardBody'}>
+        <slot name='body'><Fragment set:html={body} /></slot>
+      </Text>
+    </div>
+  </div>
+</li>

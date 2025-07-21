@@ -1,0 +1,85 @@
+---
+import Text from './Text.astro'
+
+export interface Props {
+  cta: string
+  href: string
+}
+
+const { href, cta } = Astro.props
+---
+
+<a
+  class='transition-colors duration-200 group inline-flex items-center outline-none relative justify-center tracking-tight leading-none focus:outline-white focus:outline-1 focus:outline-offset-4 h-10 px-6 rounded-full md:h-9 shadow-[0px_2px_2px_0px_rgba(0,0,0,0.74)]'
+  href={href}>
+  <span
+    class='absolute -inset-px bottom-[-1.5px] rounded-full bg-[linear-gradient(180deg,#fcc171_0%,#C17C56_50%,#362821_100%)]'
+  ></span>
+
+  <span
+    class='absolute -top-[5px] bottom-0.5 left-1/2 w-[91%] -translate-x-1/2 bg-btn-glowing mix-blend-screen blur-[1px] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px]'
+  ></span>
+
+  <span class='absolute inset-0 rounded-full bg-black'></span>
+
+  <span
+    class='absolute inset-0 rounded-full bg-btn-glowing-inset opacity-100 transition-opacity duration-300 ease-in-out group-hover:opacity-0'
+  ></span>
+
+  <span
+    class='absolute inset-0 rounded-full bg-btn-glowing-inset-hover opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100'
+  ></span>
+
+  <span class='relative z-20'>
+    <Text
+      tag={'span'}
+      variant={'badge'}
+      innerHTML={cta}
+    />
+  </span>
+</a>
+
+<style>
+  .bg-btn-glowing-inset {
+    background-image: radial-gradient(
+        53.62% 30% at 48.95% 0,
+        #f1a274 0,
+        hsla(22, 56%, 63%, 0.3) 37.7%,
+        rgba(38, 26, 21, 0) 89.47%
+      ),
+      radial-gradient(
+        66.41% 60.21% at 47.91% -7.5%,
+        rgba(240, 136, 88, 0.4) 0,
+        rgba(199, 96, 48, 0.32) 40.4%,
+        rgba(75, 57, 48, 0.05) 79.27%,
+        rgba(51, 50, 50, 0) 100%
+      );
+  }
+
+  .bg-btn-glowing {
+    background-image: radial-gradient(
+      48.05% 68.35% at 50% 50%,
+      #fff 40.73%,
+      #fdf0bd 59.8%,
+      rgba(244, 131, 93, 0.7) 66.86%,
+      rgba(103, 47, 29, 0.5) 80.35%,
+      rgba(12, 12, 18, 0) 95.77%
+    );
+  }
+
+  .bg-btn-glowing-inset-hover {
+    background-image: radial-gradient(
+        53.62% 30% at 48.95% 0,
+        #f1a274 0,
+        hsla(22, 56%, 63%, 0.3) 37.7%,
+        rgba(38, 26, 21, 0) 89.47%
+      ),
+      radial-gradient(
+        92.87% 84.2% at 47.91% -7.5%,
+        rgba(240, 136, 88, 0.4) 0,
+        rgba(199, 96, 48, 0.32) 40.4%,
+        rgba(75, 57, 48, 0.05) 79.27%,
+        rgba(51, 50, 50, 0) 100%
+      );
+  }
+</style>

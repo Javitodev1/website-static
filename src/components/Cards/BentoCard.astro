@@ -1,0 +1,48 @@
+---
+import Text from '@/components/Text.astro'
+
+import type { CMSMediaCard } from '@/types/content'
+
+const variantStyle = {
+  float: 'items-center justify-center pr-8',
+  absolute: 'pb-8',
+}
+
+type Variant = keyof typeof variantStyle
+
+export interface Props extends CMSMediaCard {
+  variant?: Variant
+}
+
+const { title, body, image, variant = 'float' } = Astro.props
+
+const variantCSS = variantStyle[variant]
+---
+
+<article
+  class='size-full flex flex-col bg-neutral-950 rounded-3xl gap-8 p-8 pr-0 pb-0 inset-shadow-card inset-shadow-neutral-50/15 border-l-2 border-b-2 border-neutral-50/80'>
+  <div class='space-y-4'>
+    <Text
+      tag={'h3'}
+      variant={'cardTitle'}
+      innerHTML={title}
+    />
+
+    <Text
+      tag={'p'}
+      variant={'cardBody'}
+      innerHTML={body}
+    />
+  </div>
+
+  <div class='grow flex' class:list={variantCSS}>
+    <img
+      src={image.url}
+      alt={image.alternativeText}
+      width={image.width}
+      height={image.height}
+      loading='lazy'
+      class="size-auto"
+    />
+  </div>
+</article>
