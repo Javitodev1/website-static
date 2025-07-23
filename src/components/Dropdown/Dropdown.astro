@@ -4,22 +4,26 @@ import DropdownMenu from './components/DropdownMenu.astro'
 
 interface Props {
   name: string
+  menuClass?: string
 }
 
-const { name } = Astro.props
+const { name, menuClass } = Astro.props
 
 const buttonId = `dropdown-${name}-button`
 const menuId = `dropdown-${name}-menu`
 ---
 
 <div data-dropdown>
-  <DropdownButton id={buttonId} menuId={menuId}>
+  <DropdownButton
+    id={buttonId}
+    menuId={menuId}>
     <slot name='header'>Dropdown Menu</slot>
   </DropdownButton>
 
   <DropdownMenu
     id={menuId}
-    labelledby={buttonId}>
+    labelledby={buttonId}
+    class={menuClass}>
     <slot />
   </DropdownMenu>
 </div>
