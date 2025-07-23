@@ -1,0 +1,105 @@
+---
+import type { GetStaticPaths } from 'astro'
+import Services, { type Props as IServices } from '@/templates/Services.astro'
+
+import { Link } from '@/consts/link'
+
+import HeroDesktopImage from '@/assets/page-assets/home-hero-desktop.png'
+import HeroMobileImage from '@/assets/page-assets/home-hero-mobile.png'
+
+import FeatureDesignImage from '@/assets/icons/inicio-diseño-grafico.svg'
+import FeatureAdImage from '@/assets/icons/inicio-publicidad.svg'
+import FeatureWebdevImage from '@/assets/icons/inicio-desarrollo-web.svg'
+
+export interface Props {
+  content: IServices
+}
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const service: IServices = {
+    layout: {
+      metadata: {
+        author: 'Javier Fuentes',
+        description:
+          'Conecta con tus clientes ideales y convierte visitas en ventas. Suads combina publicidad digital, diseño UX/UI, branding y redes sociales para crear experiencias memorables y resultados reales. Más de 2,000 campañas respaldan nuestra fórmula.',
+        title:
+          'Suads Agency | Estrategias Digitales en Publicidad, Branding y Desarrollo Web',
+        keywords:
+          'agencia digital, estrategias digitales, publicidad digital, branding, desarrollo web, diseño UX/UI, redes sociales, campañas publicitarias, conversión de ventas, marketing online, experiencia de usuario, Suads Agency',
+        ogImage: '/assets/favicon.svg',
+        url: 'suadsagency.com',
+      },
+    },
+    hero: {
+      id: 'hero',
+      title: 'Hacemos  tu marca  la opción favorita de tus clientes',
+      body: 'Estrategias innovadoras para conectar, impactar y fidelizar.',
+      desktopImage: {
+        alternativeText:
+          'Suads Agency Background | Publicidad Digital | Desarrollo Web | Diseño Grafico',
+        url: HeroDesktopImage.src,
+        width: HeroDesktopImage.width,
+        height: HeroDesktopImage.height,
+      },
+      mobileImage: {
+        alternativeText:
+          'Suads Agency Background | Publicidad Digital | Desarrollo Web | Diseño Grafico',
+        url: HeroMobileImage.src,
+        width: HeroMobileImage.width,
+        height: HeroMobileImage.height,
+      },
+    },
+    features: {
+      id: 'features',
+      title: 'Lo que nos convierte en tu aliado digital de confianza',
+      features: [
+        {
+          title: 'Publicidad Digital',
+          body: 'No solo entendemos tus objetivos, captamos lo que hace única a tu marca. Desde diseño gráfico hasta publicidad digital, reflejamos tu identidad y valores en cada detalle para que conectes auténticamente con tu audiencia.',
+          image: {
+            alternativeText: 'Suads Agency servicio Publicidad Digital',
+            url: FeatureAdImage.src,
+            width: FeatureAdImage.width,
+            height: FeatureAdImage.height,
+          },
+        },
+        {
+          title: 'Desarrollo Web',
+          body: 'No solo entendemos tus objetivos, captamos lo que hace única a tu marca. Desde diseño gráfico hasta publicidad digital, reflejamos tu identidad y valores en cada detalle para que conectes auténticamente con tu audiencia.',
+          image: {
+            alternativeText: 'Suads Agency servicio Publicidad Digital',
+            url: FeatureWebdevImage.src,
+            width: FeatureWebdevImage.width,
+            height: FeatureWebdevImage.height,
+          },
+        },
+        {
+          title: 'Diseño Grafico',
+          body: 'No solo entendemos tus objetivos, captamos lo que hace única a tu marca. Desde diseño gráfico hasta publicidad digital, reflejamos tu identidad y valores en cada detalle para que conectes auténticamente con tu audiencia.',
+          image: {
+            alternativeText: 'Suads Agency servicio Publicidad Digital',
+            url: FeatureDesignImage.src,
+            width: FeatureDesignImage.width,
+            height: FeatureDesignImage.height,
+          },
+        },
+      ],
+    },
+  }
+
+  const pages = [
+    { link: Link.ads, content: service },
+    { link: Link.webdev, content: service },
+    { link: Link.design, content: service },
+  ]
+
+  return pages.map(({ link, content }) => {
+    const service = link.slice(1)
+    return { params: { service }, props: { content } }
+  })
+}
+
+const { content } = Astro.props
+---
+
+<Services {...content} />

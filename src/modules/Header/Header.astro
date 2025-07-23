@@ -10,6 +10,32 @@ import NavBrand from './components/NavBrand.astro'
 import Hamburger from './components/Hamburger.astro'
 import NavUl from './components/NavUl.astro'
 import NavLi from './components/NavLi.astro'
+
+import WebdevIcon from '@/assets/icons/navbar-desarrollo-web.svg'
+import DesignIcon from '@/assets/icons/navbar-diseño-grafico.svg'
+import AdsIcon from '@/assets/icons/navbar-publicidad.svg'
+import type { CMSImage } from '@/types/content'
+
+const webdevIcon: CMSImage = {
+  url: WebdevIcon.src,
+  width: WebdevIcon.width,
+  height: WebdevIcon.height,
+  alternativeText: 'Suads Agency | Servicio de desarrollo web',
+}
+
+const designIcon: CMSImage = {
+  url: DesignIcon.src,
+  width: DesignIcon.width,
+  height: DesignIcon.height,
+  alternativeText: 'Suads Agency | Servicio de Diseño Grafico',
+}
+
+const adsIcon: CMSImage = {
+  url: AdsIcon.src,
+  width: AdsIcon.width,
+  height: AdsIcon.height,
+  alternativeText: 'Suads Agency | Servicio de Publicidad Digital',
+}
 ---
 
 <Navbar id='header'>
@@ -20,13 +46,28 @@ import NavLi from './components/NavLi.astro'
   <Hamburger id='hamburger' />
 
   <NavUl id='navbar'>
-    <NavLi href={Link.root}>Home</NavLi>
+    <NavLi
+      href={Link.root}
+      text='Home'
+    />
 
     <Dropdown name='services'>
       <Fragment slot='header'>Servicios</Fragment>
-      <NavLi href={Link.webdev}>Desarrollo Web</NavLi>
-      <NavLi href={Link.ads}>Publicidad</NavLi>
-      <NavLi href={Link.design}>Diseño Gráfico</NavLi>
+      <NavLi
+        href={Link.webdev}
+        text='Desarrollo Web'
+        icon={webdevIcon}
+      />
+      <NavLi
+        href={Link.ads}
+        text='Publicidad Digital'
+        icon={adsIcon}
+      />
+      <NavLi
+        href={Link.design}
+        text='Diseño Gráfico'
+        icon={designIcon}
+      />
     </Dropdown>
 
     <Button

@@ -1,4 +1,6 @@
 ---
+import '@/styles/maskFade.css'
+
 import Text from '@/components/Text.astro'
 import Badge from '@/components/Badge.astro'
 import Button from '@/components/Button.astro'
@@ -15,6 +17,7 @@ export interface Props {
   href?: string
   desktopImage?: CMSImage
   mobileImage?: CMSImage
+  fade?: boolean
 }
 
 const {
@@ -22,10 +25,11 @@ const {
   title,
   body,
   badges = [],
-  cta = '',
+  cta,
   href = '#',
   desktopImage,
   mobileImage,
+  fade,
 } = Astro.props
 
 const hasCTA = !!cta && href !== '#'
@@ -54,7 +58,8 @@ const hasImage = desktopImage != null && mobileImage != null
             width={desktopImage.width}
             height={desktopImage.height}
             loading={'eager'}
-            class='object-center object-cover size-full mask-fade'
+            class='object-center object-cover size-full'
+            class:list={[{ 'mask-fade': fade }]}
           />
         </picture>
       )

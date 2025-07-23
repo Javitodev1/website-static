@@ -1,8 +1,8 @@
 export const Link = {
   root: '/',
   contact: '/contacto',
-  webdev: '/desarrollo_web',
-  design: '/diseño_grafico',
-  ads: '/publicidad',
+  webdev: '/desarrollo-web',
+  design: '/diseño-grafico',
+  ads: '/publicidad-digital',
   services: '/servicios',
 }

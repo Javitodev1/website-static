@@ -1,0 +1,10 @@
+.mask-fade {
+  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+
+  /* For better browser support */
+  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+}

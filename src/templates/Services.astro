@@ -1,0 +1,21 @@
+---
+import MainLayout, {
+  type Props as IMainLayout,
+} from '@/layout/MainLayout.astro'
+
+import Hero, { type Props as IHero } from '@/modules/Hero.astro'
+import Features, { type Props as IFeatures } from '@/modules/Features.astro'
+
+export interface Props {
+  layout: IMainLayout
+  hero: IHero
+  features: IFeatures
+}
+
+const { layout, hero, features } = Astro.props
+---
+
+<MainLayout {...layout}>
+  <Hero {...hero} />
+  <Features {...features} />
+</MainLayout>
