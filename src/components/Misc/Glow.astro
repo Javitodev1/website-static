@@ -1,6 +1,7 @@
 ---
 const sizeStyle = {
   lg: 'md:w-96 w-48',
+  xl: 'md:w-[1200px] w-[90dvw]',
 } as const
 
 export interface GlowColor {
@@ -12,6 +13,10 @@ const colorStyle = {
   primary: {
     baseClass: 'bg-blue-700',
     lightClass: 'bg-blue-500',
+  } satisfies GlowColor,
+  neutral: {
+    baseClass: 'bg-special-850/5',
+    lightClass: 'bg-special-850/15',
   } satisfies GlowColor,
 } as const
 

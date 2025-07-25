@@ -25,10 +25,15 @@ const { layout, hero, about, features, customers, services, stats } =
 ---
 
 <MainLayout {...layout}>
-  <Hero {...hero} fade/>
+  <Hero
+    {...hero}
+    fade
+  />
   <About {...about} />
-  <Features {...features} />
-  <Customers {...customers} />
+  <div class="bg-gradient-to-b from-primary-1000 via-50% via-special-850 to-primary-1000 py-1">
+    <Features {...features} />
+    <Customers {...customers} />
+  </div>
   <Services {...services} />
   <Stats {...stats} />
 </MainLayout>

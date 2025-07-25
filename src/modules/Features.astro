@@ -14,7 +14,9 @@ export interface Props {
 const { id, title, features = [] } = Astro.props
 ---
 
-<Section id={id}>
+<Section
+  id={id}
+  color={'none'}>
   <Text
     tag={'h2'}
     variant={'title'}>

@@ -15,7 +15,9 @@ export interface Props {
 const { id, title, badge, images = [] } = Astro.props
 ---
 
-<Section id={id}>
+<Section
+  id={id}
+  color={'none'}>
   <div class='flex flex-col items-center gap-6 mb-12'>
     <Badge text={badge} />
 
