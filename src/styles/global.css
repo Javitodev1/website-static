@@ -109,7 +109,7 @@
 
   --shadow-to-r: 10px 0px 32px;
   --inset-shadow-card: inset -6px -28px 32px 6px, inset 6px -28px 32px 6px;
-  --inset-shadow-card-wrapper: inset 2px -2px 5px -3px;
+  --inset-shadow-card-sm: inset -3px -14px 32px 3px, inset 3px -14px 32px 3px;
 
   --animate-wiggle: wiggle 10s ease-in-out infinite;
   --animate-shine: shine 10s ease-out infinite;

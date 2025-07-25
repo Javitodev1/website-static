@@ -1,0 +1,31 @@
+---
+import AccordionItem from './AccordionItem.astro'
+import { type CMSBasicCard } from '@/types/content'
+
+export interface Props {
+  id: string
+  cards?: CMSBasicCard[]
+  class?: string
+}
+
+const { id, cards = [], class: className } = Astro.props
+---
+
+<ul
+  id={id}
+  class={className}
+  data-accordion='collapse'
+  data-active-classes='bg-neutral-950 text-neutral-50'
+  data-inactive-classes='text-neutral-400'>
+  {
+    cards.map((card, index) => (
+      <AccordionItem
+        {...card}
+        name={`acc-item-${index}`}
+        expanded={index === 0}
+      />
+    ))
+  }
+</ul>
+
+<script src='./libs/accordion.ts'></script>

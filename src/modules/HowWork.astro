@@ -1,0 +1,46 @@
+---
+import Section from '@/components/Section.astro'
+import Text from '@/components/Text.astro'
+import Badge from '@/components/Badge.astro'
+import Accordion from '@/components/Accordion/Accordion.astro'
+import type { CMSBasicCard, CMSImage } from '@/types/content'
+
+export interface Props {
+  id: string
+  badge: string
+  title: string
+  image: CMSImage
+  cards?: CMSBasicCard[]
+}
+
+const { id, badge, title, image, cards = [] } = Astro.props
+---
+
+<Section id={id}>
+  <Badge text={badge} />
+
+  <Text
+    variant={'title'}
+    innerHTML={title}
+    class='mt-6 mb-12'
+  />
+
+  <div class='flex flex-col md:flex-row gap-12'>
+    <Accordion
+      id='acc-how-works'
+      cards={cards}
+      class='grow'
+    />
+
+    <div class='w-[550px] h-auto aspect-square shrink-0 flex items-center'>
+      <img
+        src={image.url}
+        alt={image.alternativeText}
+        width={image.width}
+        height={image.height}
+        loading='lazy'
+        class='w-full h-auto'
+      />
+    </div>
+  </div>
+</Section>

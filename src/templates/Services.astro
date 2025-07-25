@@ -5,17 +5,20 @@ import MainLayout, {
 
 import Hero, { type Props as IHero } from '@/modules/Hero.astro'
 import Features, { type Props as IFeatures } from '@/modules/Features.astro'
+import HowWork, { type Props as IHowWork } from '@/modules/HowWork.astro'
 
 export interface Props {
   layout: IMainLayout
   hero: IHero
   features: IFeatures
+  howWork: IHowWork
 }
 
-const { layout, hero, features } = Astro.props
+const { layout, hero, features, howWork } = Astro.props
 ---
 
 <MainLayout {...layout}>
   <Hero {...hero} />
   <Features {...features} />
+  <HowWork {...howWork} />
 </MainLayout>

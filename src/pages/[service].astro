@@ -11,6 +11,8 @@ import FeatureDesignImage from '@/assets/icons/inicio-diseño-grafico.svg'
 import FeatureAdImage from '@/assets/icons/inicio-publicidad.svg'
 import FeatureWebdevImage from '@/assets/icons/inicio-desarrollo-web.svg'
 
+import ServiceWebDevelopProcess from '@/assets/page-assets/service-desarrollo-web-process.png'
+
 export interface Props {
   content: IServices
 }
@@ -84,6 +86,44 @@ export const getStaticPaths: GetStaticPaths = () => {
           },
         },
       ],
+    },
+    howWork: {
+      id: 'how-works',
+      badge: '¿Cómo lo hacemos?',
+      title: 'La Estrategia Detrás de Cada Proyecto Web',
+      image: {
+        alternativeText:
+          'Suads Agency | Servicio Desarrollo Web | Como funciona',
+        url: ServiceWebDevelopProcess.src,
+        width: ServiceWebDevelopProcess.width,
+        height: ServiceWebDevelopProcess.height,
+      },
+      cards: [
+        {
+          title: 'Estudio de requerimientos',
+          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
+        },
+        {
+          title: 'Estudio de requerimientos',
+          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
+        },
+        {
+          title: 'Estudio de requerimientos',
+          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
+        },
+        {
+          title: 'Estudio de requerimientos',
+          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
+        },
+        {
+          title: 'Estudio de requerimientos',
+          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
+        },
+        {
+          title: 'Estudio de requerimientos',
+          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
+        },
+      ]
     },
   }
 

@@ -19,10 +19,10 @@ function dropdownInit(container: Element) {
   // options with default values
   const options: DropdownOptions = {
     placement: 'bottom',
-    triggerType: 'click',
+    triggerType: 'hover',
     offsetSkidding: 0,
     offsetDistance: 10,
-    delay: 300,
+    delay: 200,
     onShow: () => {
       $iconArrow.classList.add('rotate-180')
     },

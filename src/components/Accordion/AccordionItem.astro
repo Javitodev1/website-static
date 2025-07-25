@@ -1,15 +1,16 @@
 ---
 import Text from '@/components/Text.astro'
-import Arrow from '@/assets/arrowUp.svg'
+import Arrow from '@/assets/arrow.svg'
+import type { CMSBasicCard } from '@/types/content'
 
-export interface Props {
+export interface Props extends CMSBasicCard {
   title: string
-  body: string
+  body?: string
   name: string
   expanded?: boolean
 }
 
-const { title, body, name, expanded = false } = Astro.props
+const { title, body='', name, expanded} = Astro.props
 const headingID = `accordion-heading-${name}`
 const bodyID = `accordion-body-${name}`
 ---
@@ -26,9 +27,9 @@ const bodyID = `accordion-body-${name}`
       aria-controls={bodyID}>
       <Text
         tag={'span'}
-        variant={'cardTitle'}>
-        <slot name='header'><Fragment set:html={title} /></slot>
-      </Text>
+        variant={'cardTitle'}
+        innerHTML={title}
+      />
 
       <Arrow
         data-accordion-icon
@@ -44,9 +45,10 @@ const bodyID = `accordion-body-${name}`
     data-target
     aria-labelledby={headingID}>
     <div class='py-5 border-b border-neutral-200'>
-      <Text variant={'cardBody'}>
-        <slot name='body'><Fragment set:html={body} /></slot>
-      </Text>
+      <Text
+        variant={'cardBody'}
+        innerHTML={body}
+      />
     </div>
   </div>
 </li>
