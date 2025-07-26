@@ -37,17 +37,19 @@ const { title, body } = Astro.props
 <script>
   import 'number-flow'
 
-  const flows = document.querySelectorAll('number-flow')!
+  document.addEventListener('astro:page-load', () => {
+    const flows = document.querySelectorAll('number-flow')!
 
-  flows.forEach((flow) => {
-    flow.locales = 'en-US'
-    flow.format = { notation: 'standard' }
-    flow.spinTiming = {
-      duration: 1500,
-      easing: 'ease-out',
-    }
-    flow.numberSuffix = '+'
-    
-    flow.update(1)
+    flows.forEach((flow) => {
+      flow.locales = 'en-US'
+      flow.format = { notation: 'standard' }
+      flow.spinTiming = {
+        duration: 1500,
+        easing: 'ease-out',
+      }
+      flow.numberSuffix = '+'
+
+      flow.update(1)
+    })
   })
 </script>

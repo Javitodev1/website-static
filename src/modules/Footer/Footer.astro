@@ -2,6 +2,10 @@
 import Section from '@/components/Section.astro'
 import Text from '@/components/Text.astro'
 import Logo from '@/assets/logo.svg'
+
+import ServiceLink from './components/ServiceLink.astro'
+
+import { Link } from '@/consts/link'
 ---
 
 <Section
@@ -14,15 +18,6 @@ import Logo from '@/assets/logo.svg'
 
   <ul class='flex flex-wrap gap-16 *:space-y-4'>
     <li>
-      <div>
-        <Text>Siguenos</Text>
-        <div class='flex gap-4'>
-          <p>Inst</p>
-          <p>Face</p>
-          <p>Link</p>
-        </div>
-      </div>
-
       <Text>info@suads.agency</Text>
       <Text>+598 664421</Text>
       <Text>Arturo santana 672</Text>
@@ -43,19 +38,17 @@ import Logo from '@/assets/logo.svg'
       <Text class='uppercase tracking-widest'>Servicios</Text>
       <div class='flex gap-4'>
         <div class='w-1/2 space-y-4'>
-          <Text variant={'badge'}>Publicidad en Instagram y facebook</Text>
-          <Text variant={'badge'}>Publicidad en Google ads</Text>
-          <Text variant={'badge'}>Diseño web</Text>
-          <Text variant={'badge'}>Desarrollo web</Text>
-          <Text variant={'badge'}>Diseño grafico</Text>
+          <ServiceLink href={Link.ads} text={'Publicidad en Instagram y facebook'} />
+          <ServiceLink href={Link.ads} text={'Publicidad en Google ads'} />
+          <ServiceLink href={Link.webdev} text={'Diseño web'} />
+          <ServiceLink href={Link.webdev} text={'Desarrollo web'} />
+          <ServiceLink href={Link.design} text={'Diseño grafico'} />
         </div>
 
         <div class='w-1/2 space-y-4'>
-          <Text variant={'badge'}
-            >Branding estrategico y posicionamiento de marca</Text
-          >
-          <Text variant={'badge'}>Optimizacion de funnels de conversión</Text>
-          <Text variant={'badge'}>Adquisicion y conversion de clientes</Text>
+          <ServiceLink href={Link.design} text={'Branding estrategico y posicionamiento de marca'} />
+          <ServiceLink href={Link.ads} text={'Optimizacion de funnels de conversión'} />
+          <ServiceLink href={Link.ads} text={'Adquisicion y conversion de clientes'} />
         </div>
       </div>
     </li>

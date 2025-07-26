@@ -1,5 +1,5 @@
 ---
-import Section from '@/components/Section.astro'
+import Section, { type Color } from '@/components/Section.astro'
 import Text from '@/components/Text.astro'
 import FeatureCard, {
   type Props as IFeatureCard,
@@ -9,14 +9,15 @@ export interface Props {
   id: string
   title: string
   features?: IFeatureCard[]
+  color?: Color
 }
 
-const { id, title, features = [] } = Astro.props
+const { id, title, color, features = [] } = Astro.props
 ---
 
 <Section
   id={id}
-  color={'none'}>
+  color={color}>
   <Text
     tag={'h2'}
     variant={'title'}>

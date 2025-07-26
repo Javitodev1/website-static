@@ -1,17 +1,19 @@
 ---
-const wrapperStyles = {
-  normal: 'my-16 md:my-32',
-  small: 'my-8 md:my-16',
+export const wrapperStyles = {
+  normal: 'py-16 md:py-32',
+  small: 'py-8 md:py-16',
   none: '',
 }
 
-const colorStyles = {
+export const colorStyles = {
   default: 'bg-primary-1000',
+  specialToBottom: 'bg-gradient-to-b from-primary-1000 to-80% to-special-850',
+  specialToTop: 'bg-gradient-to-t from-primary-1000 to-special-850',
   none: '',
 }
 
-type Variant = keyof typeof wrapperStyles
-type Color = keyof typeof colorStyles
+export type Variant = keyof typeof wrapperStyles
+export type Color = keyof typeof colorStyles
 
 export interface Props {
   id?: string

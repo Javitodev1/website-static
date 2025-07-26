@@ -16,7 +16,9 @@ export interface Props {
 const { id, badge, title, image, cards = [] } = Astro.props
 ---
 
-<Section id={id}>
+<Section
+  id={id}
+  color={'specialToBottom'}>
   <Badge text={badge} />
 
   <Text

@@ -13,7 +13,8 @@ const { text, href, icon = null } = Astro.props
 const hasIcon = icon != null
 ---
 
-<li class='flex items-center gap-2'>
+<li
+  class='flex items-center gap-2 border-b-2 transition-colors delay-150 border-transparent hover:border-primary'>
   {
     hasIcon && (
       <img

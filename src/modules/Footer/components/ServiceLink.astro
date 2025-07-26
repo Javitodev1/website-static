@@ -1,0 +1,19 @@
+---
+import Text from '@/components/Text.astro'
+
+export interface Props {
+  href: string
+  text: string
+}
+
+const { href, text } = Astro.props
+---
+
+<a
+  class='block w-fit transition-colors delay-75 border-b-2 border-transparent hover:border-primary'
+  href={href}>
+  <Text
+    variant={'badge'}
+    innerHTML={text}
+  />
+</a>
