@@ -1,7 +1,10 @@
 ---
-import { Link } from '@/consts/link'
+import Home from '@/templates/Home.astro'
 
-import Home, { type Props as IHome } from '@/templates/Home.astro'
+import type { Props as IHome } from '@/templates/Home.astro'
+
+import { LINK } from '@/consts/link'
+import { WHATSAPP } from '@/consts/whatsapp'
 
 import HeroDesktopImage from '@/assets/page-assets/home-hero-desktop.png'
 import HeroMobileImage from '@/assets/page-assets/home-hero-mobile.png'
@@ -30,6 +33,7 @@ import StatImage from '@/assets/page-assets/home-stats.svg'
 
 const content: IHome = {
   layout: {
+    whatsapp: WHATSAPP,
     metadata: {
       author: 'Javier Fuentes',
       description:
@@ -38,7 +42,8 @@ const content: IHome = {
         'Suads Agency | Estrategias Digitales en Publicidad, Branding y Desarrollo Web',
       keywords:
         'agencia digital, estrategias digitales, publicidad digital, branding, desarrollo web, diseño UX/UI, redes sociales, campañas publicitarias, conversión de ventas, marketing online, experiencia de usuario, Suads Agency',
-      ogImage: 'https://suads-static.pages.dev/assets/previews/home-preview.png',
+      ogImage:
+        'https://suads-static.pages.dev/assets/previews/home-preview.png',
       url: 'https://suads-static.pages.dev',
     },
   },
@@ -48,7 +53,7 @@ const content: IHome = {
     body: 'Estrategias innovadoras para conectar, impactar y fidelizar.',
     badges: ['Publicidad', 'Diseño Grafico', 'Desarrollo Web'],
     cta: 'Contactanos',
-    href: Link.contact,
+    href: LINK.contact,
     desktopImage: {
       alternativeText:
         'Suads Agency Background | Publicidad Digital | Desarrollo Web | Diseño Grafico',
@@ -76,7 +81,7 @@ const content: IHome = {
     title:
       'Somos expertos en crear conexiones que acercan tu marca a tus clientes',
     cta: 'Contactanos',
-    href: Link.contact,
+    href: LINK.contact,
   },
   features: {
     id: 'features',

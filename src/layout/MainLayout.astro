@@ -12,12 +12,14 @@ import Whatsapp from '@/components/Misc/Whatsapp.astro'
 import CSSTimelinePolyfill from '@/scripts/CSSTimelinePolyfill.astro'
 
 import { type Props as IMetadata } from '@/components/Metadata.astro'
+import { type Props as IWhatsapp } from '@/components/Misc/Whatsapp.astro'
 
 export interface Props {
   metadata: IMetadata
+  whatsapp: IWhatsapp
 }
 
-const { metadata } = Astro.props
+const { metadata, whatsapp } = Astro.props
 ---
 
 <!doctype html>
@@ -52,10 +54,7 @@ const { metadata } = Astro.props
       <Footer />
     </div>
 
-    <Whatsapp
-      phone={''}
-      message={''}
-    />
+    <Whatsapp {...whatsapp} />
 
     <CSSTimelinePolyfill />
   </body>

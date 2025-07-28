@@ -1,4 +1,4 @@
-export const Link = {
+export const LINK = {
   root: '/',
   contact: '/contacto',
   webdev: '/desarrollo-web',

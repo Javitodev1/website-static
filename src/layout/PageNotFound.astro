@@ -1,12 +1,17 @@
 ---
-import MainLayout, { type Props as IMainLayout } from './MainLayout.astro'
+import MainLayout from './MainLayout.astro'
 import Text from '@/components/Text.astro'
 import Section from '@/components/Section.astro'
 import Glow from '@/components/Misc/Glow.astro'
 
+import type { Props as IMainLayout } from './MainLayout.astro'
+
+import { WHATSAPP } from '@/consts/whatsapp'
+
 import Favicon from '@/assets/favicon-beauty.svg'
 
 const layout: IMainLayout = {
+  whatsapp: WHATSAPP,
   metadata: {
     author: 'Javier Fuentes',
     title: '404 | Pagina no encontrada',

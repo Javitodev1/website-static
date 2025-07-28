@@ -3,7 +3,7 @@ import Button from '@/components/Button.astro'
 import Dropdown from '@/components/Dropdown/Dropdown.astro'
 
 import Logo from '@/assets/logo.svg'
-import { Link } from '@/consts/link'
+import { LINK } from '@/consts/link'
 
 import Navbar from './components/Navbar.astro'
 import NavBrand from './components/NavBrand.astro'
@@ -47,7 +47,7 @@ const adsIcon: CMSImage = {
 
   <NavUl id='navbar'>
     <NavLi
-      href={Link.root}
+      href={LINK.root}
       text='Home'
     />
 
@@ -56,24 +56,24 @@ const adsIcon: CMSImage = {
       menuClass='bg-primary-1000/95 inset-shadow-card-sm inset-shadow-blue-700/5 border-l-2 border-b-2 border-blue-700/15'>
       <Fragment slot='header'>Servicios</Fragment>
       <NavLi
-        href={Link.webdev}
+        href={LINK.webdev}
         text='Desarrollo Web'
         icon={webdevIcon}
       />
       <NavLi
-        href={Link.ads}
+        href={LINK.ads}
         text='Publicidad Digital'
         icon={adsIcon}
       />
       <NavLi
-        href={Link.design}
+        href={LINK.design}
         text='Diseño Gráfico'
         icon={designIcon}
       />
     </Dropdown>
 
     <Button
-      href={Link.contact}
+      href={LINK.contact}
       cta='Contacto'
     />
   </NavUl>

@@ -1,8 +1,11 @@
 ---
-import type { GetStaticPaths } from 'astro'
-import Services, { type Props as IServices } from '@/templates/Services.astro'
+import Services from '@/templates/Services.astro'
 
-import { Link } from '@/consts/link'
+import type { GetStaticPaths } from 'astro'
+import type { Props as IServices } from '@/templates/Services.astro'
+
+import { LINK } from '@/consts/link'
+import { WHATSAPP } from '@/consts/whatsapp'
 
 import HeroDesktopImage from '@/assets/page-assets/home-hero-desktop.png'
 import HeroMobileImage from '@/assets/page-assets/home-hero-mobile.png'
@@ -20,6 +23,7 @@ export interface Props {
 export const getStaticPaths: GetStaticPaths = () => {
   const service: IServices = {
     layout: {
+      whatsapp: WHATSAPP,
       metadata: {
         author: 'Javier Fuentes',
         description:
@@ -123,14 +127,14 @@ export const getStaticPaths: GetStaticPaths = () => {
           title: 'Estudio de requerimientos',
           body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
         },
-      ]
+      ],
     },
   }
 
   const pages = [
-    { link: Link.ads, content: service },
-    { link: Link.webdev, content: service },
-    { link: Link.design, content: service },
+    { link: LINK.ads, content: service },
+    { link: LINK.webdev, content: service },
+    { link: LINK.design, content: service },
   ]
 
   return pages.map(({ link, content }) => {

@@ -49,31 +49,18 @@
 
   /* Brand Colors */
   --color-primary: #38b6ff;
-  --color-primary-50: #f1f9fe;
-  --color-primary-100: #e3f2fb;
-  --color-primary-200: #c1e5f6;
-  --color-primary-300: #89d2f0;
-  --color-primary-400: #4bbae5;
-  --color-primary-450: #38b6ff;
-  --color-primary-500: #23a1d4;
-  --color-primary-600: #1582b4;
-  --color-primary-700: #126792;
-  --color-primary-800: #135879;
-  --color-primary-900: #164964;
-  --color-primary-950: #0b2433;
+  --color-primary-50: #eff8ff;
+  --color-primary-100: #dff0ff;
+  --color-primary-200: #b8e3ff;
+  --color-primary-300: #78cdff;
+  --color-primary-400: #38b6ff;
+  --color-primary-500: #069af1;
+  --color-primary-600: #007ace;
+  --color-primary-700: #0061a7;
+  --color-primary-800: #02528a;
+  --color-primary-900: #084572;
+  --color-primary-950: #062b4b;
   --color-primary-1000: #04060c;
-
-  --color-picton-blue-50: #eff8ff;
-  --color-picton-blue-100: #dff0ff;
-  --color-picton-blue-200: #b8e3ff;
-  --color-picton-blue-300: #78cdff;
-  --color-picton-blue-400: #38b6ff;
-  --color-picton-blue-500: #069af1;
-  --color-picton-blue-600: #007ace;
-  --color-picton-blue-700: #0061a7;
-  --color-picton-blue-800: #02528a;
-  --color-picton-blue-900: #084572;
-  --color-picton-blue-950: #062b4b;
 
   --color-secondary: #ff6a00;
   --color-secondary-50: #fff8ec;
