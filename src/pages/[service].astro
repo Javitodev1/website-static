@@ -21,120 +21,340 @@ export interface Props {
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const service: IServices = {
-    layout: {
-      whatsapp: WHATSAPP,
-      metadata: {
-        author: 'Javier Fuentes',
-        description:
-          'Conecta con tus clientes ideales y convierte visitas en ventas. Suads combina publicidad digital, diseño UX/UI, branding y redes sociales para crear experiencias memorables y resultados reales. Más de 2,000 campañas respaldan nuestra fórmula.',
+  const service: Record<string, IServices> = {
+    webdev: {
+      layout: {
+        whatsapp: WHATSAPP,
+        metadata: {
+          author: 'Javier y Luisa',
+          description:
+            'Conecta con tus clientes ideales y convierte visitas en ventas. Suads combina publicidad digital, diseño UX/UI, branding y redes sociales para crear experiencias memorables y resultados reales. Más de 2,000 campañas respaldan nuestra fórmula.',
+          title:
+            'Suads Agency | Estrategias Digitales en Publicidad, Branding y Desarrollo Web',
+          keywords:
+            'agencia digital, estrategias digitales, publicidad digital, branding, desarrollo web, diseño UX/UI, redes sociales, campañas publicitarias, conversión de ventas, marketing online, experiencia de usuario, Suads Agency',
+          ogImage: '/assets/favicon.svg',
+          url: 'suadsagency.com',
+        },
+      },
+      hero: {
+        id: 'hero',
         title:
-          'Suads Agency | Estrategias Digitales en Publicidad, Branding y Desarrollo Web',
-        keywords:
-          'agencia digital, estrategias digitales, publicidad digital, branding, desarrollo web, diseño UX/UI, redes sociales, campañas publicitarias, conversión de ventas, marketing online, experiencia de usuario, Suads Agency',
-        ogImage: '/assets/favicon.svg',
-        url: 'suadsagency.com',
+          'Hacemos que tu negocio esté siempre disponible con un sitio web',
+        body: 'Mantener tu negocio disponible 24/7 significa estar al alcance de tus clientes en todo momento, sin límites de horario ni ubicación.',
+        desktopImage: {
+          alternativeText:
+            'Suads Agency landing pages para publicidad| Diseño y desarrollo de e-commerce | Pagina web Corporativa',
+          url: HeroDesktopImage.src,
+          width: HeroDesktopImage.width,
+          height: HeroDesktopImage.height,
+        },
+        mobileImage: {
+          alternativeText:
+            'Suads Agency Background | Publicidad Digital | Desarrollo Web | Diseño Grafico',
+          url: HeroMobileImage.src,
+          width: HeroMobileImage.width,
+          height: HeroMobileImage.height,
+        },
+      },
+      features: {
+        id: 'features',
+        title: 'Lo que nos convierte en tu aliado digital de confianza',
+        features: [
+          {
+            title: 'landing page para Publicidad',
+            body: 'Diseñada para convertir visitantes en clientes. Mensaje claro y sin distracciones: una sola propuesta, un solo objetivo.Optimizada para campañas: mejora el rendimiento y reduce el costo por resultado. Coherente con el anuncio: refuerza el mensaje y genera confianza. Medible y ajustable: permite testear y escalar lo que funciona.',
+            image: {
+              alternativeText: 'Suads Agency servicio Publicidad Digital',
+              url: FeatureAdImage.src,
+              width: FeatureAdImage.width,
+              height: FeatureAdImage.height,
+            },
+          },
+          {
+            title: 'Tienda Online / e-commerce',
+            body: 'Diseñado para vender: estructura pensada para facilitar la compra. Autoadministrable: gestioná productos, precios y stock sin depender de nadie. Adaptado a todos los dispositivos: experiencia de compra fluida desde cualquier pantalla. Integrado con medios de pago y envíos: cobranzas y logística resueltas. Escalable: preparado para crecer con tu negocio.',
+            image: {
+              alternativeText: 'Suads Agency servicio Publicidad Digital',
+              url: FeatureWebdevImage.src,
+              width: FeatureWebdevImage.width,
+              height: FeatureWebdevImage.height,
+            },
+          },
+          {
+            title: 'Pagina web Corporativa',
+            body: 'Proyecta confianza y profesionalismo  con presencia sólida en internet Comunica con claridad estructura pensada para contar quién sos, qué hacés y cómo contactarte Adaptada a tu identidad visual alineando con tu marca Responsiva y moderna y se vea bien en todos los dispositivos Preparada para escalar: lista para agregar funcionalidades a medida que tu negocio crece.',
+            image: {
+              alternativeText: 'Suads Agency servicio Publicidad Digital',
+              url: FeatureDesignImage.src,
+              width: FeatureDesignImage.width,
+              height: FeatureDesignImage.height,
+            },
+          },
+        ],
+      },
+      howWork: {
+        id: 'how-works',
+        badge: '¿Cómo lo hacemos?',
+        title: 'La Estrategia Detrás de Cada Proyecto Web',
+        image: {
+          alternativeText:
+            'Suads Agency | Servicio Desarrollo Web | Como funciona',
+          url: ServiceWebDevelopProcess.src,
+          width: ServiceWebDevelopProcess.width,
+          height: ServiceWebDevelopProcess.height,
+        },
+        cards: [
+          {
+            title: 'Estudio de requerimientos',
+            body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
+          },
+          {
+            title: 'Planificación y estructura web',
+            body: 'Con todo lo que hablamos, armamos la estructura de tu sitio. Pensamos cómo se va a organizar la información, qué secciones necesita y cómo lograr que la navegación sea clara y simple para quien lo visite.',
+          },
+          {
+            title: 'Propuesta gráfica',
+            body: 'Acá empezamos a darle forma visual. Diseñamos una propuesta que refleje tu marca, tus valores y el estilo que querés mostrar. Todo pensado para que se vea bien, pero también para que se comunique y conecte.',
+          },
+          {
+            title: 'Maquetación y programación',
+            body: 'Pasamos del diseño al desarrollo. Creamos el sitio con tecnología actual y buenas prácticas para que cargue rápido, se vea bien en todos los dispositivos y funcione como tiene que funcionar.',
+          },
+          {
+            title: 'Revisión y optimización',
+            body: 'Antes de publicar, revisamos todo: textos, imágenes, links, velocidad, experiencia del usuario. Ajustamos lo que sea necesario para que cuando se lance, esté todo listo y sin sorpresas.',
+          },
+          {
+            title: 'Publicación y mantenimiento',
+            body: '¡Lanzamos tu web! Pero no nos vamos corriendo: podemos ayudarte con el mantenimiento para que siempre esté actualizada, segura y funcionando bien. Porque un sitio web no es algo que se hace una vez y ya —es algo que vive y evoluciona.',
+          },
+        ],
       },
     },
-    hero: {
-      id: 'hero',
-      title: 'Hacemos  tu marca  la opción favorita de tus clientes',
-      body: 'Estrategias innovadoras para conectar, impactar y fidelizar.',
-      desktopImage: {
-        alternativeText:
-          'Suads Agency Background | Publicidad Digital | Desarrollo Web | Diseño Grafico',
-        url: HeroDesktopImage.src,
-        width: HeroDesktopImage.width,
-        height: HeroDesktopImage.height,
+    design: {
+      layout: {
+        whatsapp: WHATSAPP,
+        metadata: {
+          author: 'Javier Fuentes y luisita',
+          description:
+            'Conecta con tus clientes ideales y convierte visitas en ventas. Suads combina publicidad digital, diseño UX/UI, branding y redes sociales para crear experiencias memorables y resultados reales. Más de 2,000 campañas respaldan nuestra fórmula.',
+          title:
+            'Suads Agency | Estrategias Digitales en Publicidad, Branding y Desarrollo Web',
+          keywords:
+            'agencia digital, estrategias digitales, publicidad digital, branding, desarrollo web, diseño UX/UI, redes sociales, campañas publicitarias, conversión de ventas, marketing online, experiencia de usuario, Suads Agency',
+          ogImage: '/assets/favicon.svg',
+          url: 'suadsagency.com',
+        },
       },
-      mobileImage: {
-        alternativeText:
-          'Suads Agency Background | Publicidad Digital | Desarrollo Web | Diseño Grafico',
-        url: HeroMobileImage.src,
-        width: HeroMobileImage.width,
-        height: HeroMobileImage.height,
+      hero: {
+        id: 'hero',
+        title:
+          'Creativos estrategicos que detienen el scroll y escalan tu negocio',
+        body: 'Diseños que no solo captan la atención: conectan con tu audiencia y potencian tus campañas para lograr más clics, más ventas y más crecimiento.',
+        desktopImage: {
+          alternativeText:
+            'Suads Agency Background | Publicidad Digital | Desarrollo Web | Diseño Grafico Diseño de anuncios visuales optimizados para captar atención y aumentar conversiones en campañas publicitarias',
+          url: HeroDesktopImage.src,
+          width: HeroDesktopImage.width,
+          height: HeroDesktopImage.height,
+        },
+        mobileImage: {
+          alternativeText:
+            'Suads Agency Background | Publicidad Digital | Desarrollo Web | Diseño Grafico',
+          url: HeroMobileImage.src,
+          width: HeroMobileImage.width,
+          height: HeroMobileImage.height,
+        },
+      },
+      features: {
+        id: 'features',
+        title: 'Creativos que convierten y posicionan tu marca',
+        features: [
+          {
+            title: 'Diseño de Creativos Publicitarios',
+            body: 'Diseñamos piezas visuales pensadas para captar la atención al instante y generar clics. Cada diseño está optimizado para distintos formatos de anuncios (Meta, Google, TikTok, etc.) y orientado a la conversión. No solo se ven bien: venden.',
+            image: {
+              alternativeText: 'Suads Agency servicio Publicidad Digital',
+              url: FeatureAdImage.src,
+              width: FeatureAdImage.width,
+              height: FeatureAdImage.height,
+            },
+          },
+          {
+            title: 'Videos para Publicidad Online',
+            body: 'Creamos videos cortos, dinámicos y estratégicos que detienen el scroll y conectan con tu audiencia. Adaptados a las mejores prácticas de cada plataforma, nuestros videos están diseñados para mejorar el CTR, la retención y la tasa de conversión.',
+            image: {
+              alternativeText: 'Suads Agency servicio Publicidad Digital',
+              url: FeatureWebdevImage.src,
+              width: FeatureWebdevImage.width,
+              height: FeatureWebdevImage.height,
+            },
+          },
+          {
+            title: 'Branding Estratégico',
+            body: 'Construimos la identidad visual de tu marca desde un enfoque estratégico: colores, tipografías, tono y estilo que reflejan tu esencia, pero también conectan con tu cliente ideal. Una marca sólida no solo enamora, también convierte.',
+            image: {
+              alternativeText: 'Suads Agency servicio Publicidad Digital',
+              url: FeatureDesignImage.src,
+              width: FeatureDesignImage.width,
+              height: FeatureDesignImage.height,
+            },
+          },
+        ],
+      },
+      howWork: {
+        id: 'how-works',
+        badge: '¿Cómo lo hacemos?',
+        title: 'La Estrategia Detrás de Cada anuncio',
+        image: {
+          alternativeText:
+            'Suads Agency | Servicio Desarrollo Web | Como funciona',
+          url: ServiceWebDevelopProcess.src,
+          width: ServiceWebDevelopProcess.width,
+          height: ServiceWebDevelopProcess.height,
+        },
+        cards: [
+          {
+            title: 'Te escuchamos de verdad.',
+            body: 'Queremos entender qué vendés, a quién le hablás y qué tiene que pasar para que tu negocio crezca. Nada de fórmulas mágicas, todo empieza con conocerte',
+          },
+          {
+            title: 'Analizamos tu comunicación actual',
+            body: 'Vemos qué estás mostrando, cómo lo estás contando y qué impacto está teniendo.',
+          },
+          {
+            title: 'Definimos el enfoque creativo',
+            body: '¿Querés vender más? ¿Posicionar tu marca? ¿Lanzar algo nuevo? Con eso claro, planteamos ideas y estilos que tengan sentido (y que funcionen).',
+          },
+          {
+            title: 'Creamos piezas que detienen el scroll',
+            body: 'Diseñamos creativos que no solo se ven bien: generan clics, interés y acción. Desde imágenes para anuncios hasta reels y videos pensados para convertir.',
+          },
+          {
+            title: 'Adaptamos todo a cada canal',
+            body: 'No es lo mismo un anuncio en Instagram que un banner en YouTube. Tus piezas se ajustan según el medio y el objetivo, sin perder impacto.',
+          },
+          {
+            title: 'Medimos y optimizamos',
+            body: 'Probamos qué funciona mejor, qué genera más resultados, y volvemos a crear en base a eso. Nada se hace una vez y se deja. Todo mejora.',
+          },
+        ],
       },
     },
-    features: {
-      id: 'features',
-      title: 'Lo que nos convierte en tu aliado digital de confianza',
-      features: [
-        {
-          title: 'Publicidad Digital',
-          body: 'No solo entendemos tus objetivos, captamos lo que hace única a tu marca. Desde diseño gráfico hasta publicidad digital, reflejamos tu identidad y valores en cada detalle para que conectes auténticamente con tu audiencia.',
-          image: {
-            alternativeText: 'Suads Agency servicio Publicidad Digital',
-            url: FeatureAdImage.src,
-            width: FeatureAdImage.width,
-            height: FeatureAdImage.height,
-          },
+    ads: {
+      layout: {
+        whatsapp: WHATSAPP,
+        metadata: {
+          author: 'Javier la mayor parte y Luisa un poquito',
+          description:
+            'Publicidad digital enfocada en adquisición y conversión de clientes. Optimizamos funnels de venta para generar resultados reales y escalar tu negocio. Conecta con tus clientes ideales y convierte visitas en ventas. Suads combina publicidad digital, diseño UX/UI, branding y redes sociales para crear experiencias memorables y resultados reales. Más de 2,000 campañas respaldan nuestra fórmula.',
+          title:
+            'Suads Agency |  Publicidad Digital que Convierte |  Más Leads y Más Ventas',
+          keywords:
+            'publicidad digital en Uruguay, agencia de publicidad digital en Maldonado, campañas publicitarias Punta del Este, funnels de conversión Uruguay, adquisición de clientes online, generación de leads Uruguay, Meta Ads Uruguay, estrategia digital para negocios, campañas publicitarias efectivas, agencia digital, estrategias digitales, publicidad digital, branding, desarrollo web, diseño UX/UI, redes sociales, campañas publicitarias, conversión de ventas, marketing online, experiencia de usuario, Suads Agency',
+          ogImage: '/assets/favicon.svg',
+          url: 'suadsagency.com',
         },
-        {
-          title: 'Desarrollo Web',
-          body: 'No solo entendemos tus objetivos, captamos lo que hace única a tu marca. Desde diseño gráfico hasta publicidad digital, reflejamos tu identidad y valores en cada detalle para que conectes auténticamente con tu audiencia.',
-          image: {
-            alternativeText: 'Suads Agency servicio Publicidad Digital',
-            url: FeatureWebdevImage.src,
-            width: FeatureWebdevImage.width,
-            height: FeatureWebdevImage.height,
-          },
-        },
-        {
-          title: 'Diseño Grafico',
-          body: 'No solo entendemos tus objetivos, captamos lo que hace única a tu marca. Desde diseño gráfico hasta publicidad digital, reflejamos tu identidad y valores en cada detalle para que conectes auténticamente con tu audiencia.',
-          image: {
-            alternativeText: 'Suads Agency servicio Publicidad Digital',
-            url: FeatureDesignImage.src,
-            width: FeatureDesignImage.width,
-            height: FeatureDesignImage.height,
-          },
-        },
-      ],
-    },
-    howWork: {
-      id: 'how-works',
-      badge: '¿Cómo lo hacemos?',
-      title: 'La Estrategia Detrás de Cada Proyecto Web',
-      image: {
-        alternativeText:
-          'Suads Agency | Servicio Desarrollo Web | Como funciona',
-        url: ServiceWebDevelopProcess.src,
-        width: ServiceWebDevelopProcess.width,
-        height: ServiceWebDevelopProcess.height,
       },
-      cards: [
-        {
-          title: 'Estudio de requerimientos',
-          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
+      hero: {
+        id: 'hero',
+        title:
+          'Escala tu negocio y cruza los límites de tu facturación con campañas de publicidad online',
+        body: 'Tu negocio merece crecer. Por eso diseñamos estrategias publicitarias que conectan con tu audiencia, generan resultados reales y te acercan a tus objetivos.',
+        desktopImage: {
+          alternativeText:
+            'Suads Agency | Publicidad Digital | Optimizacion de funnels de conversión | Adquisicion y conversion de clientes | Publicidad en Google ads | Automatizaciones | Publicidad en Instagram, facebook y whatsapp.',
+          url: HeroDesktopImage.src,
+          width: HeroDesktopImage.width,
+          height: HeroDesktopImage.height,
         },
-        {
-          title: 'Estudio de requerimientos',
-          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
+        mobileImage: {
+          alternativeText:
+            'Suads Agency | Publicidad Digital | Optimizacion de funnels de conversión | Adquisicion y conversion de clientes | Publicidad en Google ads | Automatizaciones | Publicidad en Instagram, facebook y whatsapp.',
+          url: HeroMobileImage.src,
+          width: HeroMobileImage.width,
+          height: HeroMobileImage.height,
         },
-        {
-          title: 'Estudio de requerimientos',
-          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
+      },
+      features: {
+        id: 'features',
+        title: 'Asi hacemos escalar tu negocio crezca',
+        features: [
+          {
+            title: 'Gestión de Campañas',
+            body: 'Creamos campañas publicitarias en Facebook, Instagram y Google Ads enfocadas en atraer clientes potenciales y generar conversiones.',
+            image: {
+              alternativeText:
+                'Suads Agency servicio Publicidad Digital en Meta, instagram, facebook, whastapp y google ads',
+              url: FeatureAdImage.src,
+              width: FeatureAdImage.width,
+              height: FeatureAdImage.height,
+            },
+          },
+          {
+            title: 'Funnels de Conversión',
+            body: 'Mejoramos cada paso del proceso para transformar visitantes en clientes reales, aumentando la rentabilidad.',
+            image: {
+              alternativeText: 'Suads Agency servicio Publicidad Digital',
+              url: FeatureWebdevImage.src,
+              width: FeatureWebdevImage.width,
+              height: FeatureWebdevImage.height,
+            },
+          },
+          {
+            title: 'Email Marketing Estratégico',
+            body: 'Implementamos campañas de email para fidelizar clientes, aumentar ventas recurrentes y fortalecer tu marca.',
+            image: {
+              alternativeText: 'Suads Agency servicio Publicidad Digital',
+              url: FeatureDesignImage.src,
+              width: FeatureDesignImage.width,
+              height: FeatureDesignImage.height,
+            },
+          },
+        ],
+      },
+      howWork: {
+        id: 'how-works',
+        badge: '¿Cómo lo hacemos?',
+        title: 'Así es como podríamos trabajar juntos',
+        image: {
+          alternativeText:
+            'Trabajamos de la mano con vos para diseñar, ejecutar y optimizar campañas de publicidad digital que atraen clientes reales y aumentan tus ventas. Nuestro enfoque está en resultados medibles y estrategias personalizadas para cada negocio en Uruguay y la región. publicidad digital en Uruguay estrategia de publicidad online optimización de funnels de conversión adquisición de clientes online agencia de marketing digital en Maldonado campañas publicitarias efectivas',
+          url: ServiceWebDevelopProcess.src,
+          width: ServiceWebDevelopProcess.width,
+          height: ServiceWebDevelopProcess.height,
         },
-        {
-          title: 'Estudio de requerimientos',
-          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
-        },
-        {
-          title: 'Estudio de requerimientos',
-          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
-        },
-        {
-          title: 'Estudio de requerimientos',
-          body: 'Primero te escuchamos. Queremos entender qué necesitás, qué hacés, a quién le hablás y qué objetivos tenés. Solo así podemos arrancar con una base sólida y tomar decisiones que tengan sentido para vos.',
-        },
-      ],
+        cards: [
+          {
+            title: 'Analizamos tu negocio y tu audiencia',
+            body: 'Revisaremos todo el historial de tus cuentas publicitarias para detectar errores, identificar oportunidades y entender qué está funcionando (y qué no) También haremos un análisis estratégico y creativo de tus competidores para aprovechar sus aciertos y evitar sus errores.',
+          },
+          {
+            title: 'Trazaremos una estrategia enfocada en resultados',
+            body: 'Con toda la información del paso anterior, diseñaremos una estrategia de publicidad paga alineada con tu cliente ideal y tus objetivos de negocio. Definiremos los canales a utilizar, cómo distribuir el presupuesto, el tipo de funnel más adecuado y los conceptos creativos que mejor conecten con tu audiencia. Vamos a trabajar cada variable clave que impacta directamente en los resultados de tu campaña.',
+          },
+          {
+            title: 'Ejecutamos y testeamos',
+            body: 'Acá empieza el juego. Vamos a lanzar todo lo que planificamos: campañas, anuncios, copys y embudos. En esta etapa, el testeo es clave. Vamos a probar diferentes audiencias, mensajes y estructuras para ver qué funciona mejor… y potenciarlo al máximo.',
+          },
+          {
+            title: 'Mediremos resultados desde el primer día',
+            body: 'Apenas las campañas empiecen a moverse, también van a empezar a llegar las impresiones, los leads… y, con suerte, las primeras ventas. Desde el minuto uno vamos a definir KPIs claros (a nivel de cuentas, funnels y negocio) para entender qué está funcionando y qué podemos mejorar. Esto nos va a permitir sacarle el jugo al siguiente paso.',
+          },
+          {
+            title: 'Optimizaremos para escalar lo que funciona',
+            body: 'Medir no sirve de nada si no actuamos en base a eso. En esta etapa, vamos a tomar decisiones reales: lo que no funciona, se ajusta; lo que sí, se potencia. Acá no hay lugar para zonas de confort. Vamos a escalar lo que da resultados y buscar siempre más: más ventas, más rendimiento y más rentabilidad.',
+          },
+        ],
+      },
     },
   }
 
   const pages = [
-    { link: LINK.ads, content: service },
-    { link: LINK.webdev, content: service },
-    { link: LINK.design, content: service },
+    { link: LINK.ads, content: service.ads },
+    { link: LINK.webdev, content: service.webdev },
+    { link: LINK.design, content: service.design },
   ]
 
   return pages.map(({ link, content }) => {
